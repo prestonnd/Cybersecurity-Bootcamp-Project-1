@@ -44,20 +44,20 @@ The configuration details of each machine may be found below.
 
 ### Access Policies
 
-The machines on the internal network are not exposed to the public Internet. 
+Web-1 and Web-2 on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the Jumpbox machine can accept ssh connections from my home workstation. Access to this machine is only allowed from the following IP addresses:
+- Home workstation @ 184.xxx.xxx.xxx port 22
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed throguh the Ansible container on the Jumpbox.
+- ELK VM can be accessed from Home workstation @ 184.xxx.xxx.xxx port 5601
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
+| Name     | Publicly Accessible | Allowed Inbound IP Addresses |
+|----------|---------------------|------------------------------|
+| Jump Box | Yes                 | 184.xxx.xxx.xxx              |
+| Load         |                     |                      |
 |          |                     |                      |
 
 ### Elk Configuration
