@@ -35,6 +35,7 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 The configuration details of each machine may be found below.
 
 | Name          | Function |        IP Address     | Operating System |
+|---------------|----------|------------|----------|------------------|
 |               |          |   Public   | Private  |                  |
 |---------------|----------|------------|----------|------------------|
 | ELK-VM        | VM       |13.67.188.48| 10.1.0.4 |       Linux      |
