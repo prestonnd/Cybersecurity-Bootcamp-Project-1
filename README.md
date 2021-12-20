@@ -4,11 +4,13 @@ The files in this repository were used to configure the network depicted below.
 
 
 ![](Images/Network_Topology.png)
-![](Images/filebeat_deployment.png)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-  - _TODO: Enter the playbook file._
+  - Ansible/deploy_dvwa.yml
+  - Ansible/deploy_elk.yml
+  - Ansible/filebeat-playbook.yml
+  - Ansible/metricbeat-playbook.yml
 
 This document contains the following details:
 - Description of the Topology
@@ -21,24 +23,25 @@ This document contains the following details:
 
 ### Description of the Topology
 
-The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
+The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the Damn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly _____, in addition to restricting _____ to the network.
-- _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
+Load balancing ensures that the application will be highly avaialble, in addition to restricting access to the network.
+- Load balancers protect availablility of a network. The Jumpbox provides a seperate access point to the network. From the Jumpbox, Ansible can be used to deploy docker containers. 
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
-- _TODO: What does Filebeat watch for?_
-- _TODO: What does Metricbeat record?_
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the logs and file system.
+- Filebeat is a lightweight shipper for forwarding and centralizing log data. Installed as an agent on your servers, Filebeat monitors the log files or locations that you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing.
+- Metricbeat takes the metrics and statistics that it collects and ships them to the output that you specify, such as Elasticsearch or Logstash.
 
 The configuration details of each machine may be found below.
 
-| Name          | Function | IP Address | Operating System |
-|---------------|----------|------------|------------------|
-| Jump Box      | Gateway  | 10.0.0.4   | Linux            |
-| Load Balancer | Gateway  | 10.0.0.4   | Linux            |
-| Web-1         |          | 10.0.0.5   | Linux            |
-| Web-2         |          | 10.0.0.6   | Linux            |
-| TODO          |          |            |                  |
+| Name          | Function |        IP Address     | Operating System |
+|               |          |   Public   | Private  |                  |
+|---------------|----------|------------|----------|------------------|
+| ELK-VM        | VM       |13.67.188.48| 10.1.0.4 |       Linux      |
+| Jump Box      | Gateway  |20.127.66.20| 10.0.0.4 |       Linux      |
+| Load Balancer | Gateway  |168.62.53.35|          |       Linux      |
+| Web-1         | VM       |          ↪ | 10.0.0.5 |       Linux      |
+| Web-2         | VM       |          ↪ | 10.0.0.6 |       Linux      |
 
 ### Access Policies
 
