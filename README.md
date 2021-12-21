@@ -25,8 +25,8 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the Damn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly avaialble, in addition to restricting access to the network.
-- Load balancers protect availablility of a network. The Jumpbox provides a seperate access point to the network. From the Jumpbox, Ansible can be used to deploy docker containers. 
+Load balancing ensures that the application will be highly available, in addition to restricting access to the network.
+- Load balancers protect availability of a network. The Jumpbox provides a separate access point to the network. From the Jumpbox, Ansible can be used to deploy docker containers. 
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the logs and file system.
 - Filebeat is a lightweight shipper for forwarding and centralizing log data. Installed as an agent on your servers, Filebeat monitors the log files or locations that you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing.
@@ -46,33 +46,46 @@ The configuration details of each machine may be found below.
 
 Web-1 and Web-2 on the internal network are not exposed to the public Internet. 
 
-Only the Jumpbox machine can accept ssh connections from my home workstation. Access to this machine is only allowed from the following IP addresses:
+Only the Jumpbox machine can accept ssh connections from my home workstation using ssh-keys. Access to this machine is only allowed from the following IP addresses:
 - Home workstation @ 184.xxx.xxx.xxx port 22
 
-Machines within the network can only be accessed throguh the Ansible container on the Jumpbox.
-- ELK VM can be accessed from Home workstation @ 184.xxx.xxx.xxx port 5601
+Machines within the network can only be accessed through the Ansible container on the Jumpbox.
+- ELK interface can be accessed from Home workstation @ 184.xxx.xxx.xxx via HTTP through port 5601
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed Inbound IP Addresses |
-|----------|---------------------|------------------------------|
-| Jump Box | Yes                 | 184.xxx.xxx.xxx              |
-| Load         |                     |                      |
-|          |                     |                      |
+| Name         | Publicly Accessible | Allowed Inbound IP Addresses  |
+|--------------|---------------------|-------------------------------|
+| Jump Box     |         Yes         | 184.xxx.xxx.xxx SSH  port 22  |
+| Load Balancer|         Yes         | 184.xxx.xxx.xxx HTTP port 80  |
+| ELK Interface|         Yes         | 184.xxx.xxx.xxx HTTP port 5601|
+| Web-1        |         No          | 10.0.0.4        SSH  port 22  |
+| Web-2        |         No          | 10.0.0.4        SSH  port 22  |
+
 
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+- Containers can be deployed to multiple machines by setting up a single configuration file and playbook.
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Installs docker.io
+- Installs python3-pip
+- Install docker module using pip
+- 
+- 
+- 
+- 
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+(Images/docker_ps_output.png)
+
+'''
+root@ELK-VM:/home/sysadmin# docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED      STATUS       PORTS         NAMES
+a37330a515d5   sebp/elk:761   "/usr/local/bin/star…"   9 days ago   Up 2 hours   0.0.0.0:5044->5044/tcp, 0.0.0.0:5601->5601/tcp, 0.0.0.0:9200->9200/tcp, 9300/tcp   elk
+'''
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
