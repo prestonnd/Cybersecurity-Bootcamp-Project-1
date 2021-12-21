@@ -72,22 +72,18 @@ The playbook implements the following tasks:
 - Installs docker.io
 - Installs python3-pip
 - Install docker module using pip
-- 
-- 
-- 
-- 
+- Increase virtual memory using systemctl
+- Download and Launch Docker ELK container / Enable ELK ports - 5601, 9200, 5044
+- Enable the docker container to start up on boot using systemd.
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
 ![](Images/docker_ps_output.png)
 
->root@ELK-VM:/home/sysadmin# docker ps
-CONTAINER ID   IMAGE          COMMAND                  CREATED      STATUS       PORTS         NAMES
-a37330a515d5   sebp/elk:761   "/usr/local/bin/star…"   9 days ago   Up 2 hours   0.0.0.0:5044->5044/tcp, 0.0.0.0:5601->5601/tcp, 0.0.0.0:9200->9200/tcp, 9300/tcp   elk
-
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+- 10.0.0.5 (WEB-1)
+- 10.0.0.6 (WEB-2)
 
 We have installed the following Beats on these machines:
 - _TODO: Specify which Beats you successfully installed_
