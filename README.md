@@ -110,11 +110,13 @@ SSH into the control node and follow the steps below:
 10.1.0.4 ansible_python_interpreter=/usr/bin/python3
 
 - Run the playbook, and navigate to ELK VM to check that the installation worked as expected.
-> ansible-playbook filebeat-playbook.yml
+> ansible-playbook filebeat-playbook.yml <BR />
 > ansible-playbook metricbeat-playbook.yml
 
-- The config files of Metricbeat and Filebeat are automatically copied to /etc/filebeat/filebeat.yml and /etc/metricbeat/metricbeat.yml.
+- The config files of Metricbeat and Filebeat are automatically copied to...
+> /etc/filebeat/filebeat.yml and /etc/metricbeat/metricbeat.yml.
+
 - In addition to updating the host file, user info is updated in ansible.cfg.
 > remote_user = sysadmin
 
-- Navigate to http://<ELK VM Public IP>:5601/app/kibana to access the ELK web interface.
+- Navigate to http://ELK_VM_Public_IP:5601/app/kibana to access the ELK web interface.
