@@ -102,10 +102,10 @@ SSH into the control node and follow the steps below:
 
 - Copy the filebeat and Metricbeat config files to the files folder.
 - Update the ansible host file to include the private IPs ot WEB-1, WEB-2 and the ELK VM
->[webservers]
-10.0.0.5 ansible_python_interpreter=/usr/bin/python3
-10.0.0.6 ansible_python_interpreter=/usr/bin/python3
-[elk]
+>[webservers] <BR />
+10.0.0.5 ansible_python_interpreter=/usr/bin/python3<BR />
+10.0.0.6 ansible_python_interpreter=/usr/bin/python3<BR />
+[elk]<BR />
 10.1.0.4 ansible_python_interpreter=/usr/bin/python3
 
 - Run the playbook, and navigate to ____ to check that the installation worked as expected.
