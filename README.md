@@ -101,18 +101,20 @@ In order to use the playbook, you will need to have an Ansible control node alre
 SSH into the control node and follow the steps below:
 
 - Copy the filebeat and Metricbeat config files to the files folder.
-- Update the ansible host file to include the private IPs ot WEB-1, WEB-2 and the ELK VM
+- Update the ansible host file to include the private IPs of WEB-1, WEB-2 and the ELK VM
+- The hosts section of the playbook determines the destination of the playbook deployment.
 >[webservers] <BR />
 10.0.0.5 ansible_python_interpreter=/usr/bin/python3<BR />
 10.0.0.6 ansible_python_interpreter=/usr/bin/python3<BR />
 [elk]<BR />
 10.1.0.4 ansible_python_interpreter=/usr/bin/python3
 
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Run the playbook, and navigate to ELK VM to check that the installation worked as expected.
+> ansible-playbook filebeat-playbook.yml
+> ansible-playbook metricbeat-playbook.yml
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+- The config files of Metricbeat and Filebeat are automatically copied to /etc/filebeat/filebeat.yml and /etc/metricbeat/metricbeat.yml.
+- In addition to updating the host file, user info is updated in ansible.cfg.
+> remote_user = sysadmin
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+- Navigate to http://<ELK VM Public IP>:5601/app/kibana to access the ELK web interface.
