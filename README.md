@@ -96,8 +96,6 @@ These Beats allow us to collect the following information from each machine:
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
-SSH into the control node and follow the steps below:
-
 ---
 |-- ./ansible.cfg
 |-- ./deploy_dvwa.yml
@@ -108,7 +106,10 @@ SSH into the control node and follow the steps below:
 |-- ./files
 |   |-- ./files/filebeat-config.yml
     `-- ./files/metricbeat-config.yml
+
 ---
+
+SSH into the control node and follow the steps below:
 
 - Copy the filebeat and Metricbeat config files to the files folder.
 - Update the ansible host file to include the private IPs ot WEB-1, WEB-2 and the ELK VM
