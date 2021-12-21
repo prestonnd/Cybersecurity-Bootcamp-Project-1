@@ -97,14 +97,14 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 ---
-|-- ./ansible.cfg
-|-- ./deploy_dvwa.yml
-|-- ./deploy_elk.yml
-|-- ./filebeat-playbook.yml
-|-- ./hosts
-|-- ./metricbeat-playbook.yml
-|-- ./files
-|   |-- ./files/filebeat-config.yml
+|-- ./ansible.cfg<br />
+|-- ./deploy_dvwa.yml<br />
+|-- ./deploy_elk.yml<br />
+|-- ./filebeat-playbook.yml<br />
+|-- ./hosts<br />
+|-- ./metricbeat-playbook.yml<br />
+|-- ./files<br />
+|   |-- ./files/filebeat-config.yml<br />
     `-- ./files/metricbeat-config.yml
 
 ---
