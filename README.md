@@ -98,7 +98,7 @@ In order to use the playbook, you will need to have an Ansible control node alre
 
 SSH into the control node and follow the steps below:
 >|-- ./ansible.cfg
-|-- ./deploy_dvwa.yml
+>|-- ./deploy_dvwa.yml
 |-- ./deploy_elk.yml
 |-- ./filebeat-playbook.yml
 |-- ./hosts
